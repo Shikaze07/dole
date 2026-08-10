@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Show = () => {
-  return (
-    <div>
+    return <div></div>;
+};
 
-    </div>
-  )
-}
-
-export default Show
+export default Show;

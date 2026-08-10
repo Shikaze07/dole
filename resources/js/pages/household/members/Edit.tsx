@@ -34,10 +34,15 @@ export default function Edit({
         <>
             <Head title={`Edit Member — Household #${household.id}`} />
 
-            <div className="flex flex-1 flex-col gap-6 p-6 max-w-2xl">
+            <div className="flex max-w-2xl flex-1 flex-col gap-6 p-6">
                 {/* Header */}
                 <div className="flex items-center gap-4">
-                    <Button variant="ghost" size="icon" asChild className="size-9">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        asChild
+                        className="size-9"
+                    >
                         <Link href={show({ household: household.id }).url}>
                             <ArrowLeft className="size-4" />
                         </Link>
@@ -47,9 +52,12 @@ export default function Edit({
                             <FilePen className="size-5 text-amber-600 dark:text-amber-400" />
                         </div>
                         <div>
-                            <h1 className="text-2xl font-bold tracking-tight">Edit Member</h1>
+                            <h1 className="text-2xl font-bold tracking-tight">
+                                Edit Member
+                            </h1>
                             <p className="text-sm text-muted-foreground">
-                                Household: {household.fathers_name} &amp; {household.mothers_name}
+                                Household: {household.fathers_name} &amp;{' '}
+                                {household.mothers_name}
                             </p>
                         </div>
                     </div>
@@ -65,7 +73,12 @@ export default function Edit({
                         civil_status: member.civil_status,
                     }}
                     onSubmit={(form) => {
-                        form.patch(update({ household: household.id, member: member.id }).url);
+                        form.patch(
+                            update({
+                                household: household.id,
+                                member: member.id,
+                            }).url,
+                        );
                     }}
                 />
             </div>

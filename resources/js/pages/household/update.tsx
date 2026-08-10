@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button';
 import { index, update } from '@/routes/household';
 import { HouseholdForm } from './_HouseholdForm';
 
-type HouseStatus = 'rent' | 'owned' | 'living_together_with_parents' | 'others' | 'separated';
+type HouseStatus =
+    'rent' | 'owned' | 'living_together_with_parents' | 'others' | 'separated';
 
 type Household = {
     id: number;
@@ -22,10 +23,15 @@ export default function Edit({ household }: { household: Household }) {
         <>
             <Head title={`Edit Household #${household.id}`} />
 
-            <div className="flex flex-1 flex-col gap-6 p-6 max-w-3xl">
+            <div className="flex max-w-3xl flex-1 flex-col gap-6 p-6">
                 {/* Header */}
                 <div className="flex items-center gap-4">
-                    <Button variant="ghost" size="icon" asChild className="size-9">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        asChild
+                        className="size-9"
+                    >
                         <Link href={index().url}>
                             <ArrowLeft className="size-4" />
                         </Link>
@@ -35,9 +41,13 @@ export default function Edit({ household }: { household: Household }) {
                             <FilePen className="size-5 text-amber-600 dark:text-amber-400" />
                         </div>
                         <div>
-                            <h1 className="text-2xl font-bold tracking-tight">Edit Household</h1>
+                            <h1 className="text-2xl font-bold tracking-tight">
+                                Edit Household
+                            </h1>
                             <p className="text-sm text-muted-foreground">
-                                Updating record #{household.id} — {household.fathers_name} &amp; {household.mothers_name}
+                                Updating record #{household.id} —{' '}
+                                {household.fathers_name} &amp;{' '}
+                                {household.mothers_name}
                             </p>
                         </div>
                     </div>

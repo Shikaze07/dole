@@ -1,18 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-const Index = ({tests}:any) => {
-  return (
-    <div>
-            {tests.map((test:any)=>{
-                return(
-                    <div key={test.id}>
-                        {test.description}
-                    </div>
-
-                )
+const Index = ({ tests }: any) => {
+    return (
+        <div>
+            {tests.map((test: any) => {
+                return <div key={test.id}>{test.description}</div>;
             })}
-    </div>
-  )
-}
+        </div>
+    );
+};
 
-export default Index
+export default Index;

@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->foreignId('household_id')->constrained()->cascadeOnDelete();
-            $table->string('child_name');
             $table->date('birth_date');
             $table->integer('age');
-            $table->string('gender');
+            $table->string('gender'); 
             $table->enum('civil_status', ['single', 'married', 'widowed', 'divorced', 'separated'])->default('single');
             $table->timestamps();
         });

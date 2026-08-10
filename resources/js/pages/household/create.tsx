@@ -24,7 +24,8 @@ import { index, store } from '@/routes/household';
 
 // ─── Types ─────────────────────────────────────────────────────────────────
 
-type HouseStatus = 'rent' | 'owned' | 'living_together_with_parents' | 'others' | 'separated';
+type HouseStatus =
+    'rent' | 'owned' | 'living_together_with_parents' | 'others' | 'separated';
 type Gender = 'male' | 'female' | 'other';
 type CivilStatus = 'single' | 'married' | 'widowed' | 'divorced' | 'separated';
 
@@ -161,11 +162,15 @@ export default function Create() {
         <>
             <Head title="New Household" />
 
-            <div className="flex flex-1 flex-col gap-6 p-6 max-w-3xl">
-
+            <div className="flex max-w-3xl flex-1 flex-col gap-6 p-6">
                 {/* Page Header */}
                 <div className="flex items-center gap-4">
-                    <Button variant="ghost" size="icon" asChild className="size-9">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        asChild
+                        className="size-9"
+                    >
                         <Link href={index().url}>
                             <ArrowLeft className="size-4" />
                         </Link>
@@ -175,63 +180,101 @@ export default function Create() {
                             <Home className="size-5 text-sidebar-primary" />
                         </div>
                         <div>
-                            <h1 className="text-2xl font-bold tracking-tight">New Household</h1>
+                            <h1 className="text-2xl font-bold tracking-tight">
+                                New Household
+                            </h1>
                             <p className="text-sm text-muted-foreground">
-                                Register a household and optionally add members right away.
+                                Register a household and optionally add members
+                                right away.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-
                     {/* ── Parent Info ─────────────────────────────────── */}
                     <Section icon={Home} title="Parent Information">
                         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                             <div className="space-y-1.5">
-                                <Label htmlFor="fathers_name">Father's Name</Label>
+                                <Label htmlFor="fathers_name">
+                                    Father's Name
+                                </Label>
                                 <Input
                                     id="fathers_name"
                                     value={form.data.fathers_name}
-                                    onChange={(e) => form.setData('fathers_name', e.target.value)}
+                                    onChange={(e) =>
+                                        form.setData(
+                                            'fathers_name',
+                                            e.target.value,
+                                        )
+                                    }
                                     placeholder="e.g. Juan dela Cruz"
                                     autoComplete="off"
                                 />
-                                <InputError message={form.errors.fathers_name} />
+                                <InputError
+                                    message={form.errors.fathers_name}
+                                />
                             </div>
 
                             <div className="space-y-1.5">
-                                <Label htmlFor="mothers_name">Mother's Name</Label>
+                                <Label htmlFor="mothers_name">
+                                    Mother's Name
+                                </Label>
                                 <Input
                                     id="mothers_name"
                                     value={form.data.mothers_name}
-                                    onChange={(e) => form.setData('mothers_name', e.target.value)}
+                                    onChange={(e) =>
+                                        form.setData(
+                                            'mothers_name',
+                                            e.target.value,
+                                        )
+                                    }
                                     placeholder="e.g. Maria dela Cruz"
                                     autoComplete="off"
                                 />
-                                <InputError message={form.errors.mothers_name} />
+                                <InputError
+                                    message={form.errors.mothers_name}
+                                />
                             </div>
 
                             <div className="space-y-1.5">
-                                <Label htmlFor="fathers_occupation">Father's Occupation</Label>
+                                <Label htmlFor="fathers_occupation">
+                                    Father's Occupation
+                                </Label>
                                 <Input
                                     id="fathers_occupation"
                                     value={form.data.fathers_occupation}
-                                    onChange={(e) => form.setData('fathers_occupation', e.target.value)}
+                                    onChange={(e) =>
+                                        form.setData(
+                                            'fathers_occupation',
+                                            e.target.value,
+                                        )
+                                    }
                                     placeholder="e.g. Engineer"
                                 />
-                                <InputError message={form.errors.fathers_occupation} />
+                                <InputError
+                                    message={form.errors.fathers_occupation}
+                                />
                             </div>
 
                             <div className="space-y-1.5">
-                                <Label htmlFor="mothers_occupation">Mother's Occupation</Label>
+                                <Label htmlFor="mothers_occupation">
+                                    Mother's Occupation
+                                </Label>
                                 <Input
                                     id="mothers_occupation"
                                     value={form.data.mothers_occupation}
-                                    onChange={(e) => form.setData('mothers_occupation', e.target.value)}
+                                    onChange={(e) =>
+                                        form.setData(
+                                            'mothers_occupation',
+                                            e.target.value,
+                                        )
+                                    }
                                     placeholder="e.g. Teacher"
                                 />
-                                <InputError message={form.errors.mothers_occupation} />
+                                <InputError
+                                    message={form.errors.mothers_occupation}
+                                />
                             </div>
                         </div>
                     </Section>
@@ -240,46 +283,78 @@ export default function Create() {
                     <Section icon={Home} title="Housing & Financial Details">
                         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                             <div className="space-y-1.5 md:col-span-2">
-                                <Label htmlFor="home_address">Home Address</Label>
+                                <Label htmlFor="home_address">
+                                    Home Address
+                                </Label>
                                 <Input
                                     id="home_address"
                                     value={form.data.home_address}
-                                    onChange={(e) => form.setData('home_address', e.target.value)}
+                                    onChange={(e) =>
+                                        form.setData(
+                                            'home_address',
+                                            e.target.value,
+                                        )
+                                    }
                                     placeholder="e.g. 123 Rizal St., Brgy. San Jose, Manila"
                                 />
-                                <InputError message={form.errors.home_address} />
+                                <InputError
+                                    message={form.errors.home_address}
+                                />
                             </div>
 
                             <div className="space-y-1.5">
-                                <Label htmlFor="family_income">Monthly Family Income (₱)</Label>
+                                <Label htmlFor="family_income">
+                                    Monthly Family Income (₱)
+                                </Label>
                                 <Input
                                     id="family_income"
                                     type="number"
                                     min="0"
                                     step="0.01"
                                     value={form.data.family_income}
-                                    onChange={(e) => form.setData('family_income', e.target.value)}
+                                    onChange={(e) =>
+                                        form.setData(
+                                            'family_income',
+                                            e.target.value,
+                                        )
+                                    }
                                     placeholder="e.g. 25000.00"
                                 />
-                                <InputError message={form.errors.family_income} />
+                                <InputError
+                                    message={form.errors.family_income}
+                                />
                             </div>
 
                             <div className="space-y-1.5">
-                                <Label htmlFor="house_status">House Status</Label>
+                                <Label htmlFor="house_status">
+                                    House Status
+                                </Label>
                                 <Select
                                     value={form.data.house_status}
-                                    onValueChange={(v) => form.setData('house_status', v as HouseStatus)}
+                                    onValueChange={(v) =>
+                                        form.setData(
+                                            'house_status',
+                                            v as HouseStatus,
+                                        )
+                                    }
                                 >
                                     <SelectTrigger id="house_status">
                                         <SelectValue placeholder="Select status..." />
                                     </SelectTrigger>
                                     <SelectContent>
                                         {HOUSE_STATUS_OPTIONS.map((o) => (
-                                            <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>
+                                            <SelectItem
+                                                key={o.value}
+                                                value={o.value}
+                                            >
+                                                {o.label}
+                                            </SelectItem>
                                         ))}
                                     </SelectContent>
                                 </Select>
-                                <InputError message={form.errors.house_status} />
+                                <InputError
+                                    message={form.errors.house_status}
+                                />
                             </div>
                         </div>
                     </Section>
@@ -287,10 +362,12 @@ export default function Create() {
                     {/* ── Members ─────────────────────────────────────── */}
                     <div className="rounded-xl border border-sidebar-border/70 bg-card dark:border-sidebar-border">
                         {/* Members section header */}
-                        <div className="flex items-center justify-between p-6 pb-4 border-b border-sidebar-border/30">
+                        <div className="flex items-center justify-between border-b border-sidebar-border/30 p-6 pb-4">
                             <div className="flex items-center gap-2">
                                 <Users className="size-4 text-muted-foreground" />
-                                <h2 className="font-semibold">Household Members</h2>
+                                <h2 className="font-semibold">
+                                    Household Members
+                                </h2>
                                 {form.data.members.length > 0 && (
                                     <span className="ml-1 rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
                                         {form.data.members.length}
@@ -315,13 +392,23 @@ export default function Create() {
                                     <Users className="size-6 opacity-40" />
                                 </div>
                                 <div className="text-center">
-                                    <p className="text-sm font-medium">No members added yet</p>
+                                    <p className="text-sm font-medium">
+                                        No members added yet
+                                    </p>
                                     <p className="text-xs">
-                                        Click "Add Member" to include household members now,
-                                        <br />or you can add them later from the household page.
+                                        Click "Add Member" to include household
+                                        members now,
+                                        <br />
+                                        or you can add them later from the
+                                        household page.
                                     </p>
                                 </div>
-                                <Button type="button" variant="outline" size="sm" onClick={addMember}>
+                                <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={addMember}
+                                >
                                     <Plus className="size-4" />
                                     Add First Member
                                 </Button>
@@ -340,7 +427,9 @@ export default function Create() {
                                                 variant="ghost"
                                                 size="icon"
                                                 className="size-7 text-destructive hover:bg-destructive/10 hover:text-destructive"
-                                                onClick={() => removeMember(idx)}
+                                                onClick={() =>
+                                                    removeMember(idx)
+                                                }
                                             >
                                                 <Trash2 className="size-3.5" />
                                             </Button>
@@ -348,38 +437,80 @@ export default function Create() {
 
                                         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
                                             {/* Child's Name */}
-                                            <div className="space-y-1.5 col-span-2 md:col-span-4">
-                                                <Label htmlFor={`member_child_name_${idx}`}>Child's Name</Label>
+                                            <div className="col-span-2 space-y-1.5 md:col-span-4">
+                                                <Label
+                                                    htmlFor={`member_child_name_${idx}`}
+                                                >
+                                                    Child's Name
+                                                </Label>
                                                 <Input
                                                     id={`member_child_name_${idx}`}
                                                     value={member.child_name}
-                                                    onChange={(e) => setMemberField(idx, 'child_name', e.target.value)}
+                                                    onChange={(e) =>
+                                                        setMemberField(
+                                                            idx,
+                                                            'child_name',
+                                                            e.target.value,
+                                                        )
+                                                    }
                                                     placeholder="e.g. Juan dela Cruz Jr."
                                                     autoComplete="off"
                                                 />
                                                 <InputError
-                                                    message={(form.errors as Record<string, string>)[`members.${idx}.child_name`]}
+                                                    message={
+                                                        (
+                                                            form.errors as Record<
+                                                                string,
+                                                                string
+                                                            >
+                                                        )[
+                                                            `members.${idx}.child_name`
+                                                        ]
+                                                    }
                                                 />
                                             </div>
 
                                             {/* Birthdate */}
-                                            <div className="space-y-1.5 col-span-2 md:col-span-1">
-                                                <Label htmlFor={`member_birth_date_${idx}`}>Date of Birth</Label>
+                                            <div className="col-span-2 space-y-1.5 md:col-span-1">
+                                                <Label
+                                                    htmlFor={`member_birth_date_${idx}`}
+                                                >
+                                                    Date of Birth
+                                                </Label>
                                                 <Input
                                                     id={`member_birth_date_${idx}`}
                                                     type="date"
                                                     max={today}
                                                     value={member.birth_date}
-                                                    onChange={(e) => setMemberField(idx, 'birth_date', e.target.value)}
+                                                    onChange={(e) =>
+                                                        setMemberField(
+                                                            idx,
+                                                            'birth_date',
+                                                            e.target.value,
+                                                        )
+                                                    }
                                                 />
                                                 <InputError
-                                                    message={(form.errors as Record<string, string>)[`members.${idx}.birth_date`]}
+                                                    message={
+                                                        (
+                                                            form.errors as Record<
+                                                                string,
+                                                                string
+                                                            >
+                                                        )[
+                                                            `members.${idx}.birth_date`
+                                                        ]
+                                                    }
                                                 />
                                             </div>
 
                                             {/* Age */}
                                             <div className="space-y-1.5">
-                                                <Label htmlFor={`member_age_${idx}`}>Age</Label>
+                                                <Label
+                                                    htmlFor={`member_age_${idx}`}
+                                                >
+                                                    Age
+                                                </Label>
                                                 <Input
                                                     id={`member_age_${idx}`}
                                                     type="number"
@@ -387,53 +518,130 @@ export default function Create() {
                                                     max="150"
                                                     disabled
                                                     value={member.age}
-                                                    onChange={(e) => setMemberField(idx, 'age', e.target.value)}
+                                                    onChange={(e) =>
+                                                        setMemberField(
+                                                            idx,
+                                                            'age',
+                                                            e.target.value,
+                                                        )
+                                                    }
                                                     placeholder="Auto"
                                                 />
                                                 <InputError
-                                                    message={(form.errors as Record<string, string>)[`members.${idx}.age`]}
+                                                    message={
+                                                        (
+                                                            form.errors as Record<
+                                                                string,
+                                                                string
+                                                            >
+                                                        )[`members.${idx}.age`]
+                                                    }
                                                 />
                                             </div>
 
                                             {/* Gender */}
                                             <div className="space-y-1.5">
-                                                <Label htmlFor={`member_gender_${idx}`}>Gender</Label>
+                                                <Label
+                                                    htmlFor={`member_gender_${idx}`}
+                                                >
+                                                    Gender
+                                                </Label>
                                                 <Select
                                                     value={member.gender}
-                                                    onValueChange={(v) => setMemberField(idx, 'gender', v)}
+                                                    onValueChange={(v) =>
+                                                        setMemberField(
+                                                            idx,
+                                                            'gender',
+                                                            v,
+                                                        )
+                                                    }
                                                 >
-                                                    <SelectTrigger id={`member_gender_${idx}`}>
+                                                    <SelectTrigger
+                                                        id={`member_gender_${idx}`}
+                                                    >
                                                         <SelectValue placeholder="Select..." />
                                                     </SelectTrigger>
                                                     <SelectContent>
-                                                        {GENDER_OPTIONS.map((o) => (
-                                                            <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>
-                                                        ))}
+                                                        {GENDER_OPTIONS.map(
+                                                            (o) => (
+                                                                <SelectItem
+                                                                    key={
+                                                                        o.value
+                                                                    }
+                                                                    value={
+                                                                        o.value
+                                                                    }
+                                                                >
+                                                                    {o.label}
+                                                                </SelectItem>
+                                                            ),
+                                                        )}
                                                     </SelectContent>
                                                 </Select>
                                                 <InputError
-                                                    message={(form.errors as Record<string, string>)[`members.${idx}.gender`]}
+                                                    message={
+                                                        (
+                                                            form.errors as Record<
+                                                                string,
+                                                                string
+                                                            >
+                                                        )[
+                                                            `members.${idx}.gender`
+                                                        ]
+                                                    }
                                                 />
                                             </div>
 
                                             {/* Civil Status */}
                                             <div className="space-y-1.5">
-                                                <Label htmlFor={`member_civil_status_${idx}`}>Civil Status</Label>
+                                                <Label
+                                                    htmlFor={`member_civil_status_${idx}`}
+                                                >
+                                                    Civil Status
+                                                </Label>
                                                 <Select
                                                     value={member.civil_status}
-                                                    onValueChange={(v) => setMemberField(idx, 'civil_status', v)}
+                                                    onValueChange={(v) =>
+                                                        setMemberField(
+                                                            idx,
+                                                            'civil_status',
+                                                            v,
+                                                        )
+                                                    }
                                                 >
-                                                    <SelectTrigger id={`member_civil_status_${idx}`}>
+                                                    <SelectTrigger
+                                                        id={`member_civil_status_${idx}`}
+                                                    >
                                                         <SelectValue placeholder="Select..." />
                                                     </SelectTrigger>
                                                     <SelectContent>
-                                                        {CIVIL_STATUS_OPTIONS.map((o) => (
-                                                            <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>
-                                                        ))}
+                                                        {CIVIL_STATUS_OPTIONS.map(
+                                                            (o) => (
+                                                                <SelectItem
+                                                                    key={
+                                                                        o.value
+                                                                    }
+                                                                    value={
+                                                                        o.value
+                                                                    }
+                                                                >
+                                                                    {o.label}
+                                                                </SelectItem>
+                                                            ),
+                                                        )}
                                                     </SelectContent>
                                                 </Select>
                                                 <InputError
-                                                    message={(form.errors as Record<string, string>)[`members.${idx}.civil_status`]}
+                                                    message={
+                                                        (
+                                                            form.errors as Record<
+                                                                string,
+                                                                string
+                                                            >
+                                                        )[
+                                                            `members.${idx}.civil_status`
+                                                        ]
+                                                    }
                                                 />
                                             </div>
                                         </div>
@@ -464,12 +672,17 @@ export default function Create() {
                                 ? 'No members added — you can add them later.'
                                 : `${form.data.members.length} member${form.data.members.length > 1 ? 's' : ''} will be saved with this household.`}
                         </p>
-                        <Button type="submit" disabled={form.processing} className="shrink-0">
-                            {form.processing && <Loader2 className="size-4 animate-spin" />}
+                        <Button
+                            type="submit"
+                            disabled={form.processing}
+                            className="shrink-0"
+                        >
+                            {form.processing && (
+                                <Loader2 className="size-4 animate-spin" />
+                            )}
                             Create Household
                         </Button>
                     </div>
-
                 </form>
             </div>
         </>

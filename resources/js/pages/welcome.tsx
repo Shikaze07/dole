@@ -15,7 +15,11 @@ export default function Welcome() {
         <>
             <Head title="TUPAD Household Management System">
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link
+                    rel="preconnect"
+                    href="https://fonts.gstatic.com"
+                    crossOrigin="anonymous"
+                />
                 <link
                     href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap"
                     rel="stylesheet"
@@ -25,9 +29,14 @@ export default function Welcome() {
             <div className="flex min-h-screen flex-col bg-[#F6F7FB] font-['Public_Sans'] text-[#1b1b18] dark:bg-[#05070F] dark:text-[#EDEDEC]">
                 {/* Official government banner */}
                 <div className="flex items-center justify-center gap-2 bg-[#002569] px-4 py-1.5 text-center text-[11px] text-white/90">
-                    <img src={PH_FLAG} alt="" className="h-3 w-4.5 shrink-0 rounded-[1px]" />
+                    <img
+                        src={PH_FLAG}
+                        alt=""
+                        className="h-3 w-4.5 shrink-0 rounded-[1px]"
+                    />
                     <span>
-                        An unofficial system of the Republic of the Philippines &middot; Department of Labor and Employment
+                        An unofficial system of the Republic of the Philippines
+                        &middot; Department of Labor and Employment
                     </span>
                 </div>
 
@@ -35,7 +44,11 @@ export default function Welcome() {
                 <header className="mx-auto w-full max-w-6xl px-6 py-5">
                     <nav className="flex items-center justify-between gap-4">
                         <div className="flex items-center gap-3">
-                            <img src={DOLE_SEAL} alt="DOLE seal" className="h-11 w-11 shrink-0" />
+                            <img
+                                src={DOLE_SEAL}
+                                alt="DOLE seal"
+                                className="h-11 w-11 shrink-0"
+                            />
                             <div className="leading-tight">
                                 <p className="text-[11px] font-semibold tracking-wide text-[#0038A8] uppercase dark:text-[#7C93E0]">
                                     Department of Labor and Employment
@@ -88,12 +101,15 @@ export default function Welcome() {
                             Household Beneficiary Records
                         </p>
                         <h1 className="font-['Newsreader'] text-4xl leading-[1.1] font-semibold text-[#1b1b18] sm:text-5xl dark:text-white">
-                            Manage every TUPAD household, from listing to payout.
+                            Manage every TUPAD household, from listing to
+                            payout.
                         </h1>
                         <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-[#5b5a54] dark:text-[#B8B7B0]">
-                            A shared workspace for DOLE field officers and barangay coordinators to keep the
-                            household masterlist current, verify eligibility, and track wages for workers engaged
-                            in community-based emergency employment projects.
+                            A shared workspace for DOLE field officers and
+                            barangay coordinators to keep the household
+                            masterlist current, verify eligibility, and track
+                            wages for workers engaged in community-based
+                            emergency employment projects.
                         </p>
 
                         <ul className="mt-6 flex flex-col gap-1 text-[13px] leading-[20px]">
@@ -104,7 +120,8 @@ export default function Welcome() {
                                     </span>
                                 </span>
                                 <span>
-                                    See how households are verified with the barangay and LGU before
+                                    See how households are verified with the
+                                    barangay and LGU before
                                     <a
                                         href="https://dole.gov.ph/tupad-contents/"
                                         target="_blank"
@@ -140,19 +157,25 @@ export default function Welcome() {
                                 <p className="font-['Newsreader'] text-xl font-semibold text-[#0038A8] dark:text-[#7C93E0]">
                                     10&ndash;30
                                 </p>
-                                <p className="text-[11px] text-[#6b6a63] dark:text-[#9a998f]">days of paid work</p>
+                                <p className="text-[11px] text-[#6b6a63] dark:text-[#9a998f]">
+                                    days of paid work
+                                </p>
                             </div>
                             <div className="rounded-md border border-[#0038A8]/15 bg-white px-2 py-3 dark:border-white/10 dark:bg-[#0d1220]">
                                 <p className="font-['Newsreader'] text-xl font-semibold text-[#0038A8] dark:text-[#7C93E0]">
                                     Minimum wage
                                 </p>
-                                <p className="text-[11px] text-[#6b6a63] dark:text-[#9a998f]">regional daily rate</p>
+                                <p className="text-[11px] text-[#6b6a63] dark:text-[#9a998f]">
+                                    regional daily rate
+                                </p>
                             </div>
                             <div className="rounded-md border border-[#0038A8]/15 bg-white px-2 py-3 dark:border-white/10 dark:bg-[#0d1220]">
                                 <p className="font-['Newsreader'] text-xl font-semibold text-[#0038A8] dark:text-[#7C93E0]">
                                     Barangay-verified
                                 </p>
-                                <p className="text-[11px] text-[#6b6a63] dark:text-[#9a998f]">household masterlist</p>
+                                <p className="text-[11px] text-[#6b6a63] dark:text-[#9a998f]">
+                                    household masterlist
+                                </p>
                             </div>
                         </div>
 
@@ -184,15 +207,20 @@ export default function Welcome() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#002569]/70 via-transparent to-transparent" />
                             <span className="absolute right-2 bottom-1.5 text-[9px] text-white/70">
-                                Photo: Markytour777 &middot; Wikimedia Commons &middot; CC BY-SA 4.0
+                                Photo: Markytour777 &middot; Wikimedia Commons
+                                &middot; CC BY-SA 4.0
                             </span>
                         </div>
 
                         <div className="flex items-center gap-3 border-t border-[#0038A8]/10 bg-white/70 px-5 py-4 backdrop-blur-sm dark:border-white/10 dark:bg-black/30">
-                            <img src={DOLE_SEAL} alt="" className="h-8 w-8 shrink-0 opacity-90" />
+                            <img
+                                src={DOLE_SEAL}
+                                alt=""
+                                className="h-8 w-8 shrink-0 opacity-90"
+                            />
                             <p className="text-[12px] leading-snug text-[#4b4a45] dark:text-[#B8B7B0]">
-                                Built for household coordination across barangays and DOLE field offices
-                                nationwide.
+                                Built for household coordination across
+                                barangays and DOLE field offices nationwide.
                             </p>
                         </div>
                     </div>
@@ -200,7 +228,8 @@ export default function Welcome() {
 
                 {/* Footer */}
                 <footer className="mx-auto w-full max-w-6xl px-6 py-6 text-center text-[11px] text-[#8a8980] dark:text-[#6b6a63]">
-                    Household data is handled in accordance with the Data Privacy Act of 2012. Learn more at{' '}
+                    Household data is handled in accordance with the Data
+                    Privacy Act of 2012. Learn more at{' '}
                     <a
                         href="https://dole.gov.ph/"
                         target="_blank"

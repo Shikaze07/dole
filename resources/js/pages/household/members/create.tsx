@@ -16,10 +16,15 @@ export default function Create({ household }: { household: Household }) {
         <>
             <Head title={`Add Member — Household #${household.id}`} />
 
-            <div className="flex flex-1 flex-col gap-6 p-6 max-w-2xl">
+            <div className="flex max-w-2xl flex-1 flex-col gap-6 p-6">
                 {/* Header */}
                 <div className="flex items-center gap-4">
-                    <Button variant="ghost" size="icon" asChild className="size-9">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        asChild
+                        className="size-9"
+                    >
                         <Link href={show({ household: household.id }).url}>
                             <ArrowLeft className="size-4" />
                         </Link>
@@ -29,9 +34,12 @@ export default function Create({ household }: { household: Household }) {
                             <UserPlus className="size-5 text-emerald-600 dark:text-emerald-400" />
                         </div>
                         <div>
-                            <h1 className="text-2xl font-bold tracking-tight">Add Member</h1>
+                            <h1 className="text-2xl font-bold tracking-tight">
+                                Add Member
+                            </h1>
                             <p className="text-sm text-muted-foreground">
-                                Adding to: {household.fathers_name} &amp; {household.mothers_name}
+                                Adding to: {household.fathers_name} &amp;{' '}
+                                {household.mothers_name}
                             </p>
                         </div>
                     </div>

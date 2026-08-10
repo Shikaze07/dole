@@ -22,7 +22,9 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
                 {items.map((item) => {
                     const isItemActive =
                         isCurrentUrl(item.href) ||
-                        item.children?.some((child) => isCurrentUrl(child.href));
+                        item.children?.some((child) =>
+                            isCurrentUrl(child.href),
+                        );
 
                     return (
                         <SidebarMenuItem key={item.title}>
@@ -43,10 +45,17 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
                                         <SidebarMenuSubItem key={child.title}>
                                             <SidebarMenuSubButton
                                                 asChild
-                                                isActive={isCurrentUrl(child.href)}
+                                                isActive={isCurrentUrl(
+                                                    child.href,
+                                                )}
                                             >
-                                                <Link href={child.href} prefetch>
-                                                    {child.icon && <child.icon />}
+                                                <Link
+                                                    href={child.href}
+                                                    prefetch
+                                                >
+                                                    {child.icon && (
+                                                        <child.icon />
+                                                    )}
                                                     <span>{child.title}</span>
                                                 </Link>
                                             </SidebarMenuSubButton>

@@ -43,7 +43,11 @@ const CIVIL_STATUS_OPTIONS: { value: CivilStatus; label: string }[] = [
     { value: 'separated', label: 'Separated' },
 ];
 
-export function MemberForm({ onSubmit, initialData = {}, submitLabel = 'Save Member' }: Props) {
+export function MemberForm({
+    onSubmit,
+    initialData = {},
+    submitLabel = 'Save Member',
+}: Props) {
     const form = useForm<MemberFormData>({
         child_name: initialData.child_name ?? '',
         birth_date: initialData.birth_date ?? '',
@@ -79,7 +83,9 @@ export function MemberForm({ onSubmit, initialData = {}, submitLabel = 'Save Mem
                         <Input
                             id="child_name"
                             value={form.data.child_name}
-                            onChange={(e) => form.setData('child_name', e.target.value)}
+                            onChange={(e) =>
+                                form.setData('child_name', e.target.value)
+                            }
                             placeholder="e.g. Juan dela Cruz Jr."
                             autoComplete="off"
                         />
@@ -93,7 +99,9 @@ export function MemberForm({ onSubmit, initialData = {}, submitLabel = 'Save Mem
                             id="birth_date"
                             type="date"
                             value={form.data.birth_date}
-                            onChange={(e) => handleBirthDateChange(e.target.value)}
+                            onChange={(e) =>
+                                handleBirthDateChange(e.target.value)
+                            }
                             max={new Date().toISOString().split('T')[0]}
                         />
                         <InputError message={form.errors.birth_date} />
@@ -108,7 +116,9 @@ export function MemberForm({ onSubmit, initialData = {}, submitLabel = 'Save Mem
                             min="0"
                             max="150"
                             value={form.data.age}
-                            onChange={(e) => form.setData('age', e.target.value)}
+                            onChange={(e) =>
+                                form.setData('age', e.target.value)
+                            }
                             placeholder="Auto-calculated from birthdate"
                         />
                         <InputError message={form.errors.age} />
@@ -119,14 +129,19 @@ export function MemberForm({ onSubmit, initialData = {}, submitLabel = 'Save Mem
                         <Label htmlFor="gender">Gender</Label>
                         <Select
                             value={form.data.gender}
-                            onValueChange={(val) => form.setData('gender', val as Gender)}
+                            onValueChange={(val) =>
+                                form.setData('gender', val as Gender)
+                            }
                         >
                             <SelectTrigger id="gender">
                                 <SelectValue placeholder="Select gender..." />
                             </SelectTrigger>
                             <SelectContent>
                                 {GENDER_OPTIONS.map((opt) => (
-                                    <SelectItem key={opt.value} value={opt.value}>
+                                    <SelectItem
+                                        key={opt.value}
+                                        value={opt.value}
+                                    >
                                         {opt.label}
                                     </SelectItem>
                                 ))}
@@ -140,14 +155,19 @@ export function MemberForm({ onSubmit, initialData = {}, submitLabel = 'Save Mem
                         <Label htmlFor="civil_status">Civil Status</Label>
                         <Select
                             value={form.data.civil_status}
-                            onValueChange={(val) => form.setData('civil_status', val as CivilStatus)}
+                            onValueChange={(val) =>
+                                form.setData('civil_status', val as CivilStatus)
+                            }
                         >
                             <SelectTrigger id="civil_status">
                                 <SelectValue placeholder="Select status..." />
                             </SelectTrigger>
                             <SelectContent>
                                 {CIVIL_STATUS_OPTIONS.map((opt) => (
-                                    <SelectItem key={opt.value} value={opt.value}>
+                                    <SelectItem
+                                        key={opt.value}
+                                        value={opt.value}
+                                    >
                                         {opt.label}
                                     </SelectItem>
                                 ))}
@@ -158,7 +178,11 @@ export function MemberForm({ onSubmit, initialData = {}, submitLabel = 'Save Mem
                 </div>
             </div>
 
-            <Button type="submit" disabled={form.processing} className="w-full sm:w-auto">
+            <Button
+                type="submit"
+                disabled={form.processing}
+                className="w-full sm:w-auto"
+            >
                 {form.processing && <Loader2 className="size-4 animate-spin" />}
                 {submitLabel}
             </Button>

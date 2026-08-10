@@ -12,7 +12,8 @@ import {
 } from '@/components/ui/select';
 import InputError from '@/components/input-error';
 
-type HouseStatus = 'rent' | 'owned' | 'living_together_with_parents' | 'others' | 'separated';
+type HouseStatus =
+    'rent' | 'owned' | 'living_together_with_parents' | 'others' | 'separated';
 
 type HouseholdFormData = {
     fathers_name: string;
@@ -38,7 +39,11 @@ const HOUSE_STATUS_OPTIONS: { value: HouseStatus; label: string }[] = [
     { value: 'separated', label: 'Separated' },
 ];
 
-export function HouseholdForm({ onSubmit, initialData = {}, submitLabel = 'Save' }: Props) {
+export function HouseholdForm({
+    onSubmit,
+    initialData = {},
+    submitLabel = 'Save',
+}: Props) {
     const form = useForm<HouseholdFormData>({
         fathers_name: initialData.fathers_name ?? '',
         mothers_name: initialData.mothers_name ?? '',
@@ -69,7 +74,9 @@ export function HouseholdForm({ onSubmit, initialData = {}, submitLabel = 'Save'
                         <Input
                             id="fathers_name"
                             value={form.data.fathers_name}
-                            onChange={(e) => form.setData('fathers_name', e.target.value)}
+                            onChange={(e) =>
+                                form.setData('fathers_name', e.target.value)
+                            }
                             placeholder="e.g. Juan dela Cruz"
                             autoComplete="off"
                         />
@@ -82,7 +89,9 @@ export function HouseholdForm({ onSubmit, initialData = {}, submitLabel = 'Save'
                         <Input
                             id="mothers_name"
                             value={form.data.mothers_name}
-                            onChange={(e) => form.setData('mothers_name', e.target.value)}
+                            onChange={(e) =>
+                                form.setData('mothers_name', e.target.value)
+                            }
                             placeholder="e.g. Maria dela Cruz"
                             autoComplete="off"
                         />
@@ -91,11 +100,18 @@ export function HouseholdForm({ onSubmit, initialData = {}, submitLabel = 'Save'
 
                     {/* Father's Occupation */}
                     <div className="space-y-1.5">
-                        <Label htmlFor="fathers_occupation">Father's Occupation</Label>
+                        <Label htmlFor="fathers_occupation">
+                            Father's Occupation
+                        </Label>
                         <Input
                             id="fathers_occupation"
                             value={form.data.fathers_occupation}
-                            onChange={(e) => form.setData('fathers_occupation', e.target.value)}
+                            onChange={(e) =>
+                                form.setData(
+                                    'fathers_occupation',
+                                    e.target.value,
+                                )
+                            }
                             placeholder="e.g. Engineer"
                         />
                         <InputError message={form.errors.fathers_occupation} />
@@ -103,11 +119,18 @@ export function HouseholdForm({ onSubmit, initialData = {}, submitLabel = 'Save'
 
                     {/* Mother's Occupation */}
                     <div className="space-y-1.5">
-                        <Label htmlFor="mothers_occupation">Mother's Occupation</Label>
+                        <Label htmlFor="mothers_occupation">
+                            Mother's Occupation
+                        </Label>
                         <Input
                             id="mothers_occupation"
                             value={form.data.mothers_occupation}
-                            onChange={(e) => form.setData('mothers_occupation', e.target.value)}
+                            onChange={(e) =>
+                                form.setData(
+                                    'mothers_occupation',
+                                    e.target.value,
+                                )
+                            }
                             placeholder="e.g. Teacher"
                         />
                         <InputError message={form.errors.mothers_occupation} />
@@ -119,7 +142,9 @@ export function HouseholdForm({ onSubmit, initialData = {}, submitLabel = 'Save'
             <div className="rounded-xl border border-sidebar-border/70 bg-card p-6 dark:border-sidebar-border">
                 <div className="mb-5 flex items-center gap-2">
                     <Home className="size-4 text-muted-foreground" />
-                    <h2 className="font-semibold">Housing & Financial Details</h2>
+                    <h2 className="font-semibold">
+                        Housing & Financial Details
+                    </h2>
                 </div>
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                     {/* Home Address */}
@@ -128,7 +153,9 @@ export function HouseholdForm({ onSubmit, initialData = {}, submitLabel = 'Save'
                         <Input
                             id="home_address"
                             value={form.data.home_address}
-                            onChange={(e) => form.setData('home_address', e.target.value)}
+                            onChange={(e) =>
+                                form.setData('home_address', e.target.value)
+                            }
                             placeholder="e.g. 123 Rizal St., Brgy. San Jose, Manila"
                         />
                         <InputError message={form.errors.home_address} />
@@ -136,14 +163,18 @@ export function HouseholdForm({ onSubmit, initialData = {}, submitLabel = 'Save'
 
                     {/* Family Income */}
                     <div className="space-y-1.5">
-                        <Label htmlFor="family_income">Monthly Family Income (₱)</Label>
+                        <Label htmlFor="family_income">
+                            Monthly Family Income (₱)
+                        </Label>
                         <Input
                             id="family_income"
                             type="number"
                             min="0"
                             step="0.01"
                             value={form.data.family_income}
-                            onChange={(e) => form.setData('family_income', e.target.value)}
+                            onChange={(e) =>
+                                form.setData('family_income', e.target.value)
+                            }
                             placeholder="e.g. 25000.00"
                         />
                         <InputError message={form.errors.family_income} />
@@ -154,14 +185,19 @@ export function HouseholdForm({ onSubmit, initialData = {}, submitLabel = 'Save'
                         <Label htmlFor="house_status">House Status</Label>
                         <Select
                             value={form.data.house_status}
-                            onValueChange={(val) => form.setData('house_status', val as HouseStatus)}
+                            onValueChange={(val) =>
+                                form.setData('house_status', val as HouseStatus)
+                            }
                         >
                             <SelectTrigger id="house_status">
                                 <SelectValue placeholder="Select status..." />
                             </SelectTrigger>
                             <SelectContent>
                                 {HOUSE_STATUS_OPTIONS.map((opt) => (
-                                    <SelectItem key={opt.value} value={opt.value}>
+                                    <SelectItem
+                                        key={opt.value}
+                                        value={opt.value}
+                                    >
                                         {opt.label}
                                     </SelectItem>
                                 ))}
@@ -173,7 +209,11 @@ export function HouseholdForm({ onSubmit, initialData = {}, submitLabel = 'Save'
             </div>
 
             {/* Submit */}
-            <Button type="submit" disabled={form.processing} className="w-full sm:w-auto">
+            <Button
+                type="submit"
+                disabled={form.processing}
+                className="w-full sm:w-auto"
+            >
                 {form.processing && <Loader2 className="size-4 animate-spin" />}
                 {submitLabel}
             </Button>
