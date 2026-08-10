@@ -16,6 +16,7 @@ type Gender = 'male' | 'female' | 'other';
 
 type Member = {
     id: number;
+    child_name: string;
     birth_date: string;
     age: number;
     gender: Gender;
@@ -228,6 +229,7 @@ export default function Show({ household }: { household: Household }) {
                                 <thead>
                                     <tr className="bg-muted/40">
                                         <th className="px-4 py-3 text-left font-semibold text-muted-foreground">#</th>
+                                        <th className="px-4 py-3 text-left font-semibold text-muted-foreground">Child's Name</th>
                                         <th className="px-4 py-3 text-left font-semibold text-muted-foreground">Date of Birth</th>
                                         <th className="px-4 py-3 text-left font-semibold text-muted-foreground">Age</th>
                                         <th className="px-4 py-3 text-left font-semibold text-muted-foreground">Gender</th>
@@ -242,6 +244,7 @@ export default function Show({ household }: { household: Household }) {
                                             className="transition-colors hover:bg-muted/20"
                                         >
                                             <td className="px-4 py-3 text-muted-foreground">{idx + 1}</td>
+                                            <td className="px-4 py-3 font-semibold">{member.child_name}</td>
                                             <td className="px-4 py-3 font-mono text-xs">{member.birth_date}</td>
                                             <td className="px-4 py-3 font-semibold">{member.age} yrs</td>
                                             <td className="px-4 py-3">

@@ -16,6 +16,7 @@ type Household = {
 
 type Member = {
     id: number;
+    child_name: string;
     birth_date: string;
     age: number;
     gender: Gender;
@@ -57,6 +58,7 @@ export default function Edit({
                 <MemberForm
                     submitLabel="Update Member"
                     initialData={{
+                        child_name: member.child_name,
                         birth_date: member.birth_date,
                         age: String(member.age),
                         gender: member.gender,

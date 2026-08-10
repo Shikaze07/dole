@@ -25,6 +25,7 @@ class MembersController extends Controller
     public function store(Request $request, Household $household)
     {
         $validated = $request->validate([
+            'child_name'   => 'required|string|max:255',
             'birth_date'   => 'required|date|before_or_equal:today',
             'age'          => 'required|integer|min:0|max:150',
             'gender'       => 'required|in:male,female,other',
@@ -69,6 +70,7 @@ class MembersController extends Controller
     public function update(Request $request, Household $household, Members $member)
     {
         $validated = $request->validate([
+            'child_name'   => 'required|string|max:255',
             'birth_date'   => 'required|date|before_or_equal:today',
             'age'          => 'required|integer|min:0|max:150',
             'gender'       => 'required|in:male,female,other',

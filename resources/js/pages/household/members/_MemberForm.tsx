@@ -16,6 +16,7 @@ type Gender = 'male' | 'female' | 'other';
 type CivilStatus = 'single' | 'married' | 'widowed' | 'divorced' | 'separated';
 
 export type MemberFormData = {
+    child_name: string;
     birth_date: string;
     age: string;
     gender: Gender | '';
@@ -44,6 +45,7 @@ const CIVIL_STATUS_OPTIONS: { value: CivilStatus; label: string }[] = [
 
 export function MemberForm({ onSubmit, initialData = {}, submitLabel = 'Save Member' }: Props) {
     const form = useForm<MemberFormData>({
+        child_name: initialData.child_name ?? '',
         birth_date: initialData.birth_date ?? '',
         age: initialData.age ?? '',
         gender: (initialData.gender as Gender) ?? '',
@@ -71,6 +73,19 @@ export function MemberForm({ onSubmit, initialData = {}, submitLabel = 'Save Mem
         <form onSubmit={handleSubmit} className="space-y-6">
             <div className="rounded-xl border border-sidebar-border/70 bg-card p-6 dark:border-sidebar-border">
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+                    {/* Child Name */}
+                    <div className="space-y-1.5 md:col-span-2">
+                        <Label htmlFor="child_name">Child's Name</Label>
+                        <Input
+                            id="child_name"
+                            value={form.data.child_name}
+                            onChange={(e) => form.setData('child_name', e.target.value)}
+                            placeholder="e.g. Juan dela Cruz Jr."
+                            autoComplete="off"
+                        />
+                        <InputError message={form.errors.child_name} />
+                    </div>
+
                     {/* Birthdate */}
                     <div className="space-y-1.5">
                         <Label htmlFor="birth_date">Date of Birth</Label>

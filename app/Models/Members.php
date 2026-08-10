@@ -9,6 +9,7 @@ class Members extends Model
 {
     protected $fillable = [
         'household_id',
+        'child_name',
         'birth_date',
         'age',
         'gender',

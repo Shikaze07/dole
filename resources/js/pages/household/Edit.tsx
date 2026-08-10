@@ -32,6 +32,7 @@ type CivilStatus = 'single' | 'married' | 'widowed' | 'divorced' | 'separated';
 
 type MemberRow = {
     id?: number;
+    child_name: string;
     birth_date: string;
     age: string;
     gender: Gender | '';
@@ -49,6 +50,7 @@ type Household = {
     house_status: HouseStatus;
     members?: {
         id: number;
+        child_name: string;
         birth_date: string;
         age: number;
         gender: Gender;
@@ -92,6 +94,7 @@ const CIVIL_STATUS_OPTIONS: { value: CivilStatus; label: string }[] = [
 ];
 
 const EMPTY_MEMBER: MemberRow = {
+    child_name: '',
     birth_date: '',
     age: '',
     gender: '',
@@ -145,6 +148,7 @@ export default function Edit({ household }: { household: Household }) {
         house_status: household.house_status,
         members: household.members?.map(m => ({
             id: m.id,
+            child_name: m.child_name,
             birth_date: m.birth_date,
             age: String(m.age),
             gender: m.gender,
@@ -382,6 +386,21 @@ export default function Edit({ household }: { household: Household }) {
                                         </div>
 
                                         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+                                            {/* Child's Name */}
+                                            <div className="space-y-1.5 col-span-2 md:col-span-4">
+                                                <Label htmlFor={`member_child_name_${idx}`}>Child's Name</Label>
+                                                <Input
+                                                    id={`member_child_name_${idx}`}
+                                                    value={member.child_name}
+                                                    onChange={(e) => setMemberField(idx, 'child_name', e.target.value)}
+                                                    placeholder="e.g. Juan dela Cruz Jr."
+                                                    autoComplete="off"
+                                                />
+                                                <InputError
+                                                    message={(form.errors as Record<string, string>)[`members.${idx}.child_name`]}
+                                                />
+                                            </div>
+
                                             {/* Birthdate */}
                                             <div className="space-y-1.5 col-span-2 md:col-span-1">
                                                 <Label htmlFor={`member_birth_date_${idx}`}>Date of Birth</Label>

@@ -48,6 +48,7 @@ class HouseholdController extends Controller
             'family_income'      => 'required|numeric|min:0',
             'house_status'       => 'required|in:rent,owned,living_together_with_parents,others,separated',
             'members'            => 'nullable|array',
+            'members.*.child_name'   => 'required_with:members.*|string|max:255',
             'members.*.birth_date'   => 'required_with:members.*|date|before_or_equal:today',
             'members.*.age'          => 'required_with:members.*|integer|min:0|max:150',
             'members.*.gender'       => 'required_with:members.*|in:male,female,other',
@@ -123,6 +124,7 @@ class HouseholdController extends Controller
             'house_status'       => 'required|in:rent,owned,living_together_with_parents,others,separated',
             'members'            => 'nullable|array',
             'members.*.id'           => 'nullable|integer|exists:members,id',
+            'members.*.child_name'   => 'required_with:members.*|string|max:255',
             'members.*.birth_date'   => 'required_with:members.*|date|before_or_equal:today',
             'members.*.age'          => 'required_with:members.*|integer|min:0|max:150',
             'members.*.gender'       => 'required_with:members.*|in:male,female,other',
@@ -143,6 +145,7 @@ class HouseholdController extends Controller
                 foreach ($membersPayload as $memberData) {
                     if (!empty($memberData['id'])) {
                         $household->members()->where('id', $memberData['id'])->update([
+                            'child_name' => $memberData['child_name'],
                             'birth_date' => $memberData['birth_date'],
                             'age' => $memberData['age'],
                             'gender' => $memberData['gender'],
