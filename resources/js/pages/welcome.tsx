@@ -27,7 +27,7 @@ export default function Welcome() {
                 <div className="flex items-center justify-center gap-2 bg-[#002569] px-4 py-1.5 text-center text-[11px] text-white/90">
                     <img src={PH_FLAG} alt="" className="h-3 w-4.5 shrink-0 rounded-[1px]" />
                     <span>
-                        An official system of the Republic of the Philippines &middot; Department of Labor and Employment
+                        An unofficial system of the Republic of the Philippines &middot; Department of Labor and Employment
                     </span>
                 </div>
 
