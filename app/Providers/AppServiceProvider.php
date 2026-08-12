@@ -24,7 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-         URL::forceScheme('https');
+        if (!app()->isLocal()) {
+            URL::forceScheme('https');
+        }
         $this->configureDefaults();
 
         \Illuminate\Support\Facades\Event::listen(\Illuminate\Auth\Events\Login::class, function (\Illuminate\Auth\Events\Login $event) {

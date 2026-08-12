@@ -1,22 +1,13 @@
-import { Head, Link, router } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import {
     ArrowLeft,
     Eye,
     FilePen,
-    Plus,
-    Trash2,
     UserCheck,
     Users,
 } from 'lucide-react';
-import { useState } from 'react';
-import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
-import { index, edit, destroy } from '@/routes/household';
-import {
-    create as createMember,
-    edit as editMember,
-    destroy as destroyMember,
-} from '@/routes/household/members';
+import { index, edit } from '@/routes/household';
 
 type HouseStatus =
     'rent' | 'owned' | 'living_together_with_parents' | 'others' | 'separated';
@@ -92,62 +83,11 @@ function DetailRow({
 }
 
 export default function Show({ household }: { household: Household }) {
-    const [deletingHousehold, setDeletingHousehold] = useState(false);
-    const [deletingMemberId, setDeletingMemberId] = useState<number | null>(
-        null,
-    );
-
-    const handleDeleteHousehold = () => {
-        toast.warning(
-            'Are you sure you want to delete this household and all its members?',
-            {
-                action: {
-                    label: 'Delete',
-                    onClick: () => {
-                        setDeletingHousehold(true);
-                        router.delete(
-                            destroy({ household: household.id }).url,
-                            {
-                                onFinish: () => setDeletingHousehold(false),
-                            },
-                        );
-                    },
-                },
-                duration: 6000,
-            },
-        );
-    };
-
-    const handleDeleteMember = (memberId: number) => {
-        toast.warning(
-            'Are you sure you want to remove this member from the household?',
-            {
-                action: {
-                    label: 'Remove',
-                    onClick: () => {
-                        setDeletingMemberId(memberId);
-                        router.delete(
-                            destroyMember({
-                                household: household.id,
-                                member: memberId,
-                            }).url,
-                            {
-                                preserveScroll: true,
-                                onFinish: () => setDeletingMemberId(null),
-                            },
-                        );
-                    },
-                },
-                duration: 6000,
-            },
-        );
-    };
-
     return (
         <>
             <Head title={`Household #${household.id}`} />
 
-            <div className="flex max-w-4xl flex-1 flex-col gap-6 p-6">
+            <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-6 p-6">
                 {/* Page Header */}
                 <div className="flex flex-wrap items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
@@ -182,14 +122,6 @@ export default function Show({ household }: { household: Household }) {
                                 <FilePen className="size-4" />
                                 Edit
                             </Link>
-                        </Button>
-                        <Button
-                            variant="destructive"
-                            onClick={handleDeleteHousehold}
-                            disabled={deletingHousehold}
-                        >
-                            <Trash2 className="size-4" />
-                            Delete
                         </Button>
                     </div>
                 </div>
@@ -271,17 +203,6 @@ export default function Show({ household }: { household: Household }) {
                                 {household.members.length}
                             </span>
                         </div>
-                        <Button asChild size="sm">
-                            <Link
-                                href={
-                                    createMember({ household: household.id })
-                                        .url
-                                }
-                            >
-                                <Plus className="size-4" />
-                                Add Member
-                            </Link>
-                        </Button>
                     </div>
 
                     {/* Members Table */}
@@ -293,8 +214,7 @@ export default function Show({ household }: { household: Household }) {
                             <div className="text-center">
                                 <p className="font-medium">No members yet</p>
                                 <p className="text-sm">
-                                    Click "Add Member" to register household
-                                    members.
+                                    No registered members found for this household.
                                 </p>
                             </div>
                         </div>
@@ -320,9 +240,6 @@ export default function Show({ household }: { household: Household }) {
                                         </th>
                                         <th className="px-4 py-3 text-left font-semibold text-muted-foreground">
                                             Civil Status
-                                        </th>
-                                        <th className="px-4 py-3 text-right font-semibold text-muted-foreground">
-                                            Actions
                                         </th>
                                     </tr>
                                 </thead>
@@ -357,44 +274,6 @@ export default function Show({ household }: { household: Household }) {
                                             </td>
                                             <td className="px-4 py-3 capitalize">
                                                 {member.civil_status}
-                                            </td>
-                                            <td className="px-4 py-3">
-                                                <div className="flex items-center justify-end gap-1">
-                                                    <Button
-                                                        variant="ghost"
-                                                        size="icon"
-                                                        asChild
-                                                        className="size-8"
-                                                    >
-                                                        <Link
-                                                            href={
-                                                                editMember({
-                                                                    household:
-                                                                        household.id,
-                                                                    member: member.id,
-                                                                }).url
-                                                            }
-                                                        >
-                                                            <FilePen className="size-4" />
-                                                        </Link>
-                                                    </Button>
-                                                    <Button
-                                                        variant="ghost"
-                                                        size="icon"
-                                                        className="size-8 text-destructive hover:bg-destructive/10 hover:text-destructive"
-                                                        onClick={() =>
-                                                            handleDeleteMember(
-                                                                member.id,
-                                                            )
-                                                        }
-                                                        disabled={
-                                                            deletingMemberId ===
-                                                            member.id
-                                                        }
-                                                    >
-                                                        <Trash2 className="size-4" />
-                                                    </Button>
-                                                </div>
                                             </td>
                                         </tr>
                                     ))}
