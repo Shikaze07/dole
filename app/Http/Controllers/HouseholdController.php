@@ -71,7 +71,7 @@ class HouseholdController extends Controller
                 'message' => 'Household created successfully.',
             ]);
 
-            return redirect()->route('household.show', $household);
+            return redirect()->route('household.index');
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
 
@@ -162,7 +162,7 @@ class HouseholdController extends Controller
                 'message' => 'Household updated successfully.',
             ]);
 
-            return redirect()->route('household.show', $household);
+            return redirect()->route('household.index');
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
 
